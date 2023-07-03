@@ -11,19 +11,19 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+# As amended by DTGitRepository for AWS hosting
 
 apiVersion: 1
 
 datasources:
-- name: Google BigQuery
-  type: grafana-bigquery-datasource
+- name: Amazon Redshift
+  type: redshift
   access: proxy
   isDefault: true
   basicAuth: false
   withCredentials: false
   jsonData:
-       authenticationType: gce
-       queryPriority: INTERACTIVE
-       processingLocation: $BQ_REGION
+       authType: default
+       defaultRegion: eu-west-1
   version: 3
   readOnly: false

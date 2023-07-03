@@ -11,6 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+# As amended by DTGitRepository for AWS hosting
 
 FROM grafana/grafana
 
@@ -18,10 +19,6 @@ FROM grafana/grafana
 ENV GF_AUTH_DISABLE_LOGIN_FORM "true"
 ENV GF_AUTH_ANONYMOUS_ENABLED "true"
 ENV GF_AUTH_ANONYMOUS_ORG_ROLE "Admin"
-
-# during setup, this variable will be configured onto the Cloud Run service
-# (default here to "US" as a fallback)
-ENV BQ_REGION "US"
 
 # Setting grafana config
 COPY grafana.ini /etc/grafana
@@ -32,4 +29,4 @@ COPY dashboards.yaml /etc/grafana/provisioning/dashboards
 COPY datasource.yaml /etc/grafana/provisioning/datasources
 
 # Installing the BigQuery Plugin
-RUN grafana-cli plugins install grafana-bigquery-datasource
+RUN grafana-cli plugins install grafana-redshift-datasource
